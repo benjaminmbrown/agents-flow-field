@@ -1,10 +1,10 @@
-var Vehicle = function(x, y) {
+var Vehicle = function(x, y, maxSpeed, maxForce) {
     this.acceleration = createVector(0, 0);
     this.velocity = createVector(0, -2);
     this.position = createVector(x, y);
     this.r = 6;
-    this.maxSpeed = 3;
-    this.maxForce = 0.3;
+    this.maxSpeed = maxSpeed || 3;
+    this.maxForce = maxForce || 0.2;
     this.mass = 155;
 
     this.wanderRadius = 19;
@@ -12,6 +12,30 @@ var Vehicle = function(x, y) {
     this.wanderCenter = 0;
     this.wanderAngle = 0;
     this.wanderForce = createVector();
+
+    this.run = function() {
+        this.update();
+        this.borders();
+        this.display();
+    }
+
+    this.borders = function() {
+        if (this.position.x < -this.r) this.position.x = width + this.r;
+        if (this.position.y < -this.r) this.position.y = height + this.r;
+        if (this.position.x > width + this.r) this.position.x = -this.r;
+        if (this.position.y > height + this.r) this.position.y = -this.r;
+    }
+
+    this.followFlow = function(flowfield){
+        var desired = createVector(flowfield.lookup(this.position));
+        desired.mult(this.maxSpeed);
+
+        var steer = p5.Vector.sub(desired, this.velocity);
+        steer.limit(this.maxForce);
+        this.applyForce(steer);
+        
+    }
+
 
     this.seek = function(target) {
         var desired = p5.Vector.sub(target, this.position);

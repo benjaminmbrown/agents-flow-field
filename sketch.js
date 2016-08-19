@@ -1,34 +1,37 @@
-
 var pursuer;
 var evader;
 
+var debug = true;
+var flowfield;
+var vehicles = [];
+
 
 function setup() {
- createCanvas(640, 360);
- setFrameRate(30);
- pursuer = new Vehicle(width/4, height/4);
- evader = new Vehicle(width/2, height/2);
 
+    createCanvas(640, 360);
+    setFrameRate(30);
+    flowfield = new Flowfield(20);
 
-
+    for (var i = 0; i < 30; i++) {
+        vehicles.push(new Vehicle(random(width), random(height), random(2, 5), random(0.1, 0.5)));
+    }
 }
 
-function draw(){
-	background(255);
-	var mouse = createVector(mouseX, mouseY);
-	fill(127);
-	stroke(200);
-	strokeWeight(2);
-	ellipse(mouse.x,mouse.y, 48,48);
-	
-	pursuer.pursue(evader);
-	pursuer.boundaries();
-	pursuer.update();
-	pursuer.display();
+function draw() {
+    background(255);
+    if (debug) { flowfield.display(); }
+    for (var i = 0; i < vehicles.length; i++) {
+        vehicles[i].followFlow(flowfield);
+        vehicles[i].run();
+    }
+}
 
-	//evader.seek(mouse);
-	evader.wander();
-	evader.update();
-	evader.display();
+function keyPressed() {
+    if (key == ' ') {
+        debug != debug;
+    }
+}
 
+function mousePressed() {
+    flowfield.init();
 }
