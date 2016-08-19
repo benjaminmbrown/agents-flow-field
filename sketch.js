@@ -21,8 +21,8 @@ function draw() {
     background(255);
     if (debug) { flowfield.display(); }
     for (var i = 0; i < vehicles.length; i++) {
-        vehicles[i].followFlow(flowfield);
-        vehicles[i].run();
+       // vehicles[i].followFlow(flowfield);
+       // vehicles[i].run();
     }
 }
 

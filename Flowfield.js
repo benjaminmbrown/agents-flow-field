@@ -43,7 +43,7 @@ var Flowfield = function(r) {
         var arrowSize = 4;
         translate(x, y);
         stroke(200, 100);
-        rotate(v.heading);
+        rotate(v.heading());
         var length = v.mag() * scayl;
         line(0, 0, length, 0);
         pop();
