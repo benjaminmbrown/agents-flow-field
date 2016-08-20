@@ -3,6 +3,7 @@ var Flowfield = function(r) {
     this.resolution = r;
     this.cols = width / this.resolution;
     this.rows = height / this.resolution;
+    this.timeIncrement = 0;
 
     this.create2DArray = function(n) {
         var array = [];
@@ -21,8 +22,8 @@ var Flowfield = function(r) {
         for (var i = 0 ;i < this.cols; i++) {
             var yoff = 0;
             for (var j = 0; j < this.rows; j++) {
-                var theta = map(noise(xoff, yoff,xoff), 0, 1, 0, TWO_PI);
-               var theta =  map(noise(xoff, yoff), 0, 1, 0,10);
+                
+                var theta =  map(noise(xoff, yoff, this.timeIncrement), 0, 1, 0,10);
                 //polar to cartesian
                 //this.field[i][j] = createVector(1,0);
                 //this.field[i][j] = p5.Vector.random2D();// random vector
@@ -32,6 +33,7 @@ var Flowfield = function(r) {
             }
             xoff += 0.1;
         }
+        this.timeIncrement +=0.5;
     }
 
     this.init();

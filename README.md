@@ -9,3 +9,6 @@ Modeling an agent in a flow field.
 
 #right - facing vectors only
 <img src= "https://media.giphy.com/media/l0HlvvrKDz4A5V5Ti/giphy.gif"/>
+
+#600 agents
+<img src= "https://media.giphy.com/media/l0MYBlIVfkZIo8D1C/giphy.gif"/>
