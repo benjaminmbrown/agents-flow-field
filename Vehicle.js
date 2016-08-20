@@ -13,7 +13,7 @@ var Vehicle = function(x, y, maxSpeed, maxForce, width, height) {
     this.wanderAngle = 0;
     this.wanderForce = createVector();
 
-     var c = color(random(1,255),random(1,255),random(1,255));
+     var c = color(0,0,random(x,y));
 
     this.run = function() {
         this.update();

@@ -1,7 +1,7 @@
 # agents-flow-field
 Modeling an agent in a flow field.
 
-
+Push k on keyboard to add an agent. Push space to generate new flow field
 <img src="https://media.giphy.com/media/l0MYJDphIGTTj7JqE/giphy.gif"/>
 
 #Adding random 2d vector for flowfield cells

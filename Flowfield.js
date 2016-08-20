@@ -47,7 +47,7 @@ var Flowfield = function(r) {
     //draws arrows for vectors
     var drawVector = function(v, x, y, scayl) {
         push();
-        var arrowSize = 7;
+        var arrowSize = 2;
         translate(x, y);
         stroke(200, 100);
         rotate(v.heading());
