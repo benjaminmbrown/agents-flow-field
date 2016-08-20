@@ -17,12 +17,17 @@ var Flowfield = function(r) {
 
     this.init = function() {
         var xoff = 0;
+
         for (var i = 0 ;i < this.cols; i++) {
             var yoff = 0;
             for (var j = 0; j < this.rows; j++) {
-                var theta = map(noise(xoff, yoff), 0, 1, 0, TWO_PI);
+                var theta = map(noise(xoff, yoff,xoff), 0, 1, 0, TWO_PI);
+               var theta =  map(noise(xoff, yoff), 0, 1, 0,10);
                 //polar to cartesian
-                this.field[i][j] = createVector(cos(theta), sin(theta));
+                //this.field[i][j] = createVector(1,0);
+                //this.field[i][j] = p5.Vector.random2D();// random vector
+                //this.field[i][j] = createVector(cos(theta), sin(theta)); // perlin noise based
+                this.field[i][j] = createVector(cos(theta), sin(theta));    
                 yoff += 0.1;
             }
             xoff += 0.1;

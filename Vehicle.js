@@ -4,7 +4,7 @@ var Vehicle = function(x, y, maxSpeed, maxForce, width, height) {
     this.position = createVector(x, y);
     this.r = 6;
     this.maxSpeed = maxSpeed || 3;
-    this.maxForce = maxForce || 0.2;
+    this.maxForce = maxForce || 0.1;
     this.mass = 155;
 
     this.wanderRadius = 19;
