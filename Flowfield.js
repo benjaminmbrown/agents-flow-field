@@ -34,7 +34,7 @@ var Flowfield = function(r) {
     this.lookup = function(lookup) {
         var col = Math.floor(constrain(lookup.x / this.resolution, 0, this.cols - 1));
         var row = Math.floor(constrain(lookup.y / this.resolution, 0, this.rows - 1));
-
+        return this.field[col][row].copy();
     }
 
     //draws arrows for vectors

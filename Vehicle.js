@@ -1,4 +1,4 @@
-var Vehicle = function(x, y, maxSpeed, maxForce) {
+var Vehicle = function(x, y, maxSpeed, maxForce, width, height) {
     this.acceleration = createVector(0, 0);
     this.velocity = createVector(0, -2);
     this.position = createVector(x, y);
@@ -26,14 +26,15 @@ var Vehicle = function(x, y, maxSpeed, maxForce) {
         if (this.position.y > height + this.r) this.position.y = -this.r;
     }
 
-    this.followFlow = function(flowfield){
-        var desired = createVector(flowfield.lookup(this.position));
+
+    this.followFlow = function(flowfield) {
+        var desired = flowfield.lookup(this.position);
         desired.mult(this.maxSpeed);
 
         var steer = p5.Vector.sub(desired, this.velocity);
         steer.limit(this.maxForce);
         this.applyForce(steer);
-        
+
     }
 
 

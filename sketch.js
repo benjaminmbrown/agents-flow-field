@@ -13,7 +13,7 @@ function setup() {
     flowfield = new Flowfield(20);
 
     for (var i = 0; i < 30; i++) {
-        vehicles.push(new Vehicle(random(width), random(height), random(2, 5), random(0.1, 0.5)));
+        vehicles.push(new Vehicle(random(width), random(height), random(2, 5), random(0.1, 0.5), width,height));
     }
 }
 
@@ -21,8 +21,8 @@ function draw() {
     background(255);
     if (debug) { flowfield.display(); }
     for (var i = 0; i < vehicles.length; i++) {
-       // vehicles[i].followFlow(flowfield);
-       // vehicles[i].run();
+        vehicles[i].followFlow(flowfield);
+        vehicles[i].run();
     }
 }
 
