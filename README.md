@@ -12,3 +12,6 @@ Modeling an agent in a flow field.
 
 #600 agents
 <img src= "https://media.giphy.com/media/l0MYBlIVfkZIo8D1C/giphy.gif"/>
+
+#Follow mouse and also respect forces from flow field
+<img src="https://media.giphy.com/media/l2Sq8uRrZnjAT0TZK/giphy.gif"/>
