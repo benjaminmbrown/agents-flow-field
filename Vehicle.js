@@ -13,6 +13,8 @@ var Vehicle = function(x, y, maxSpeed, maxForce, width, height) {
     this.wanderAngle = 0;
     this.wanderForce = createVector();
 
+     var c = color(random(1,255),random(1,255),random(1,255));
+
     this.run = function() {
         this.update();
         this.borders();
@@ -152,7 +154,8 @@ var Vehicle = function(x, y, maxSpeed, maxForce, width, height) {
 
     this.display = function() {
         var theta = this.velocity.heading() + PI / 2;
-        fill(127);
+       
+        fill(c);
         stroke(200);
         strokeWeight(1);
         push();
