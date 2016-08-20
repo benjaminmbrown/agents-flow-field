@@ -23,15 +23,17 @@ function draw() {
     if (debug) { flowfield.display(); }
     for (var i = 0; i < vehicles.length; i++) {
         vehicles[i].followFlow(flowfield);
-        vehicles[i].seek(mouse);
+      vehicles[i].seek(mouse);
         vehicles[i].run();
     }
 }
 
 function keyPressed() {
-    if (key == ' ') {
+	console.log(key);
+    if (key == 'K') {
         debug != debug;
     }
+    console.log(debug);
 }
 
 function mousePressed() {

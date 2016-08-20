@@ -14,29 +14,29 @@ var Flowfield = function(r) {
     }
 
     this.field = this.create2DArray(this.cols);
-    console.log('field',this.field);
+    console.log('field', this.field);
 
     this.init = function() {
         var xoff = 0;
 
-        for (var i = 0 ;i < this.cols; i++) {
+        for (var i = 0; i < this.cols; i++) {
             var yoff = 0;
             for (var j = 0; j < this.rows; j++) {
-                
-                var theta =  map(noise(xoff, yoff, this.timeIncrement), 0, 1, 0,10);
+
+                var theta = map(noise(xoff, yoff, this.timeIncrement), 0, 1, 0, 10);
                 //polar to cartesian
                 //this.field[i][j] = createVector(1,0);
                 //this.field[i][j] = p5.Vector.random2D();// random vector
                 //this.field[i][j] = createVector(cos(theta), sin(theta)); // perlin noise based
-                this.field[i][j] = createVector(cos(theta), sin(theta));    
+                this.field[i][j] = createVector(cos(theta), sin(theta));
                 yoff += 0.1;
             }
             xoff += 0.1;
         }
-        this.timeIncrement +=0.5;
+        this.timeIncrement += 0.5;
     }
 
-    this.init();
+  //  this.init();
 
     this.lookup = function(lookup) {
         var col = Math.floor(constrain(lookup.x / this.resolution, 0, this.cols - 1));
@@ -47,12 +47,12 @@ var Flowfield = function(r) {
     //draws arrows for vectors
     var drawVector = function(v, x, y, scayl) {
         push();
-        var arrowSize = 4;
+        var arrowSize = 7;
         translate(x, y);
         stroke(200, 100);
         rotate(v.heading());
         var length = v.mag() * scayl;
-        line(0, 0, length, 0);
+        line(0, 1, length, 0);
         pop();
 
 
@@ -63,10 +63,18 @@ var Flowfield = function(r) {
 
 
     this.display = function() {
+                var xoff = 0;
         for (var i = 0; i < this.cols; i++) {
+            var yoff = 0;
             for (var j = 0; j < this.rows; j++) {
-                drawVector(this.field[i][j], i*this.resolution,j*this.resolution, this.resolution-2);
+                var theta = map(noise(xoff, yoff, this.timeIncrement), 0, 1, 0, 10);
+                this.field[i][j] = createVector(cos(theta), sin(theta));
+                drawVector(this.field[i][j], i * this.resolution, j * this.resolution, this.resolution - 2);
+
+                yoff += 0.1;
             }
+            xoff += 0.1;
         }
+        this.timeIncrement += 0.005;
     }
 }

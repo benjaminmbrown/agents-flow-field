@@ -15,3 +15,6 @@ Modeling an agent in a flow field.
 
 #Follow mouse and also respect forces from flow field
 <img src="https://media.giphy.com/media/l0MYz7luVEWwle5Y4/giphy.gif"/>
+
+#Dynamically changing flow field
+<img src = "https://media.giphy.com/media/l0HlyNbMORNM6874c/giphy.gif"/>
